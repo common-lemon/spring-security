@@ -23,7 +23,7 @@ public class SignUpController {
 
     @PostMapping
     public String processSignup(@ModelAttribute Account account) {
-        account.setRole("USER");
+        account.setRole(account.getRole());
         accountService.createNew(account);
         return "redirect:/";
     }

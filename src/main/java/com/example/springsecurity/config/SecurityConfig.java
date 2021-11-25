@@ -77,7 +77,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .expressionHandler(expressionHandler());
 
-        http.formLogin();
+        http.formLogin().loginPage("/login").permitAll();
+
+        http.rememberMe().userDetailsService(accountService);
+
+
         http.httpBasic();
 
         // SecurityContext를 자식 쓰레드에도 공유하는 전략 설정
